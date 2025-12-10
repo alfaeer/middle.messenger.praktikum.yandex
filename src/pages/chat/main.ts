@@ -4,7 +4,6 @@ import {ChatPage} from "@pages/chat";
 import * as GeneralComponents from '@components/general'
 import * as TemplateUtils from '@utils/TemplateUtils'
 
-import {ChatSearch} from "@components/chat/chat-search";
 import {ChatField} from "@components/chat/chat-field";
 import {ChatList} from "@components/chat/chat-list";
 import {Editor} from "@components/chat/editor";
@@ -12,9 +11,7 @@ import {MessageField} from "@components/chat/message-field";
 import {MessageBox} from "@components/chat/message-box";
 
 
-TemplateUtils.prepareAndCompilePage([GeneralComponents,
-    {'ChatSearch': ChatSearch}
-], 'app', ChatPage);
+TemplateUtils.prepareAndCompilePage([GeneralComponents], 'app', ChatPage);
 
 TemplateUtils.prepareAndCompilePage([
     {'ChatList': ChatList},
