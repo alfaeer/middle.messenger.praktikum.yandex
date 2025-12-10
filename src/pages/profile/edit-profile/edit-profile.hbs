@@ -1,0 +1,69 @@
+{{#> ProfileContainer title="Edit Профиль"}}
+    <form id="edit-profile-form" method="post">
+        <header class="header-container">
+            <div class="main-img-container">
+                <a id="profile-img-change" href="#">
+                    <div class="profile-hover-text">Поменять аватар</div>
+                </a>
+            </div>
+            <div class="profile-name">
+                Иван
+            </div>
+        </header>
+        <main class="main-container">
+            <table class="view-table edit-profile">
+                <tr>
+                    <th>Почта</th>
+                    <td>
+                        <input type="text" id="email" name="email">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Логин</th>
+                    <td>
+                        <input type="text" id="login" name="login">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Имя</th>
+                    <td>
+                        <input type="text" id="first_name" name="first_name">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Фамилия</th>
+                    <td>
+                        <input type="text" id="second_name" name="second_name">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Имя в чате</th>
+                    <td>
+                        <input type="text" id="nickname" name="nickname">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Телефон</th>
+                    <td>
+                        <input type="text" id="phone" name="phone">
+                    </td>
+                </tr>
+            </table>
+        </main>
+        <footer class="footer-container">
+            <div class="button-container">
+                {{> Button id="profile-edit-save" label="Сохранить" type="primary" }}
+            </div>
+        </footer>
+    </form>
+{{/ ProfileContainer}}
+
+{{#> DialogContainer}}
+    <h2 class="title">Загрузите файл</h2>
+    <main>
+        {{> Button id="upload-img" label="Выбрать файл на компьютере" type="link" }}
+    </main>
+    <footer>
+        {{> Button id="accept-img" label="Применить" type="primary" }}
+    </footer>
+{{/ DialogContainer}}

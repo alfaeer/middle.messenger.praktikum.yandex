@@ -1,0 +1,13 @@
+{{#> FormContainer title="Регистрация"}}
+    <form id="sign-in-form" method="post">
+        {{> Input id="email" label="Почта" }}
+        {{> Input id="login" label="Логин" }}
+        {{> Input id="first_name" label="Имя" }}
+        {{> Input id="second_name" label="Фамилия" }}
+        {{> Input id="phone" label="Телефон" }}
+        {{> Input id="password" label="Пароль" }}
+        {{> Input id="password-confirm" label="Подтвердите пароль" }}
+        {{> Button id="submit" label="Зарегистрироваться" type="primary" }}
+        {{> Button id="sign-in" label="Выйти" type="link" }}
+    </form>
+{{/ FormContainer}}

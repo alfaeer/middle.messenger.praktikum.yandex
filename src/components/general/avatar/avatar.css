@@ -1,0 +1,12 @@
+.image-box {
+    margin-top: 4px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(230, 230, 230);
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.image-box img {
+    border-radius: 9999px;
+}
