@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "npm install && npm run build"
+    "start": "npm install && npm run build && npm run preview"
   },
   "engines": {
     "node": ">=22.0.0",
