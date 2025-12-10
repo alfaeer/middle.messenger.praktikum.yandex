@@ -1,0 +1,14 @@
+.change-img-container {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 15px;
+    outline: 0;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+    text-align: center;
+    padding: 30px 10px;
+}

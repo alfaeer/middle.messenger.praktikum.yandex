@@ -1,0 +1,26 @@
+.message-editor-container {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #999999;
+    margin: 10px;
+    align-items: center;
+}
+
+.message-editor-container > * {
+    padding: 5px;
+}
+
+.message-editor {
+    flex: 1 1 auto;
+}
+
+#message {
+    width: 100%;
+    height: 36px;
+    padding: 10px;
+}
+
+#message-send {
+    border-radius: 100px;
+    color: #ffffff !important;
+}
