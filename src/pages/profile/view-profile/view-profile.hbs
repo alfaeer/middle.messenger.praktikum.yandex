@@ -1,6 +1,5 @@
 {{#> ProfileContainer title="View Профиль"}}
-    <form id="view-profile-form" method="post">
-        <header class="header-container">
+        <div class="header-container">
             <div class="main-img-container">
                 <a id="profile-img-change" href="#">
                     <div class="profile-hover-text">Поменять аватар</div>
@@ -9,7 +8,7 @@
             <div class="profile-name">
                 Иван
             </div>
-        </header>
+        </div>
         <main class="main-container">
             <table class="view-table">
                 <tr>
@@ -38,14 +37,13 @@
                 </tr>
             </table>
         </main>
-        <footer class="footer-container">
+        <div class="buttons-edit-container">
             <div class="profile-nav">
                 {{> Button id="profile-edit-info" label="Изменить профиль" type="link" }}
                 {{> Button id="profile-edit-password" label="Изменить пароль" type="link" }}
                 {{> Button id="profile-edit-exit" label="Выйти" type="redlink" }}
             </div>
-        </footer>
-    </form>
+        </div>
 {{/ ProfileContainer}}
 
 {{#> DialogContainer}}

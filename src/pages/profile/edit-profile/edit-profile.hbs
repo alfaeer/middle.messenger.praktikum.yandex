@@ -1,16 +1,16 @@
 {{#> ProfileContainer title="Edit Профиль"}}
-    <form id="edit-profile-form" method="post">
-        <header class="header-container">
-            <div class="main-img-container">
-                <a id="profile-img-change" href="#">
-                    <div class="profile-hover-text">Поменять аватар</div>
-                </a>
-            </div>
-            <div class="profile-name">
-                Иван
-            </div>
-        </header>
-        <main class="main-container">
+    <div class="header-container">
+        <div class="main-img-container">
+            <a id="profile-img-change" href="#">
+                <div class="profile-hover-text">Поменять аватар</div>
+            </a>
+        </div>
+        <div class="profile-name">
+            Иван
+        </div>
+    </div>
+    <main class="main-container">
+        <form id="edit-profile-form" method="post">
             <table class="view-table edit-profile">
                 <tr>
                     <th>Почта</th>
@@ -49,13 +49,11 @@
                     </td>
                 </tr>
             </table>
-        </main>
-        <footer class="footer-container">
-            <div class="button-container">
+            <div class="buttons-container">
                 {{> Button id="profile-edit-save" label="Сохранить" type="primary" }}
             </div>
-        </footer>
-    </form>
+        </form>
+    </main>
 {{/ ProfileContainer}}
 
 {{#> DialogContainer}}
