@@ -1,0 +1,62 @@
+.chat-field-wrapper {
+    display: block;
+    width: auto;
+    height: 80px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.chat-field-wrapper:hover {
+    background: #d5ebf7;
+}
+
+.selected {
+    background: #98d3f5;
+}
+
+.chat-field-wrapper {
+    border-bottom: 1px solid #999999;
+}
+
+.chat-field-item-data {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.chat-field-item-data .profile h4 {
+    margin: 4px;
+}
+
+.chat-field-item-data .profile p {
+    margin: 4px;
+    font-size: 14px;
+}
+
+.chat-field-item-data .data-box {
+    flex: 1 1 auto;
+}
+
+.chat-field-item-data .info-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-field-item-data .auto-flex-size {
+    flex: 1 1 auto;
+}
+
+.chat-field-item-data .notifications-box {
+    border: none;
+    background-color: #2570e0;
+    border-radius: 100%;
+    align-content: center;
+    color: white;
+    margin: 4px;
+}
+
+.chat-field-item-data .notification-value {
+    height: 100%;
+    align-items: center;
+}

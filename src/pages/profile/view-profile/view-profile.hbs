@@ -1,0 +1,57 @@
+{{#> ProfileContainer title="View Профиль"}}
+        <div class="header-container">
+            <div class="main-img-container">
+                <a id="profile-img-change" href="#">
+                    <div class="profile-hover-text">Поменять аватар</div>
+                </a>
+            </div>
+            <div class="profile-name">
+                Иван
+            </div>
+        </div>
+        <main class="main-container">
+            <table class="view-table">
+                <tr>
+                    <th>Почта</th>
+                    <td>{{userMail}}</td>
+                </tr>
+                <tr>
+                    <th>Логин</th>
+                    <td>{{userLogin}}</td>
+                </tr>
+                <tr>
+                    <th>Имя</th>
+                    <td>{{userName}}</td>
+                </tr>
+                <tr>
+                    <th>Фамилия</th>
+                    <td>{{userSecondName}}</td>
+                </tr>
+                <tr>
+                    <th>Имя в чате</th>
+                    <td>{{userNickname}}</td>
+                </tr>
+                <tr>
+                    <th>Телефон</th>
+                    <td>{{userPhoneNumber}}</td>
+                </tr>
+            </table>
+        </main>
+        <div class="buttons-edit-container">
+            <div class="profile-nav">
+                {{> Button id="profile-edit-info" label="Изменить профиль" type="link" }}
+                {{> Button id="profile-edit-password" label="Изменить пароль" type="link" }}
+                {{> Button id="profile-edit-exit" label="Выйти" type="redlink" }}
+            </div>
+        </div>
+{{/ ProfileContainer}}
+
+{{#> DialogContainer}}
+    <h2 class="title">Загрузите файл</h2>
+    <main>
+        {{> Button id="upload-img" label="Выбрать файл на компьютере" type="link" }}
+    </main>
+    <footer>
+        {{> Button id="accept-img" label="Применить" type="primary" }}
+    </footer>
+{{/ DialogContainer}}
