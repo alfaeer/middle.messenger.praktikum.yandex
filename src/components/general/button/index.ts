@@ -1,3 +1,3 @@
 import './button.css';
 
-export { default as Button } from './button.ts';
+export { default as Button } from './button';

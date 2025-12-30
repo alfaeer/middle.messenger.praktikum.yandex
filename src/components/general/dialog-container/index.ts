@@ -1,3 +1,3 @@
-import './dialog-container.css'
+import './dialog-container.css';
 
-export {default as DialogContainer} from './dialog-container.hbs?raw';
+export { default as DialogContainer } from './dialog-container';
