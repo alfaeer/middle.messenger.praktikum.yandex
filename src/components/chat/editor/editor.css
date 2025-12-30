@@ -1,8 +1,9 @@
 .message-editor-container {
     display: flex;
     flex-direction: row;
-    border-top: 1px solid #999999;
+    border-top: 1px solid #999;
     margin: 10px;
+    padding: 5px;
     align-items: center;
 }
 
@@ -12,6 +13,7 @@
 
 .message-editor {
     flex: 1 1 auto;
+    padding: 0 5px;
 }
 
 #message {
@@ -22,5 +24,9 @@
 
 #message-send {
     border-radius: 100px;
-    color: #ffffff !important;
+    color: #fff !important;
+}
+
+.message-form {
+    display: contents;
 }

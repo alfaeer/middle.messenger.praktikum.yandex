@@ -1,0 +1,22 @@
+.header {
+    font-size: 70px;
+    margin: 0 0 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.error404-body {
+    font-size: 25px;
+    margin: 0;
+    margin-bottom: 60px;
+}
+
+.form-container {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

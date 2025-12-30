@@ -1,18 +1,3 @@
-.edit-profile td {
-    width: 70%;
-}
-
-.edit-profile input {
-    width: 100%;
-    padding: 5px 5px;
-    border: 0;
-    direction:rtl;
-}
-
-.edit-profile input:focus {
-    outline: 0;
-}
-
 .buttons-container {
     margin-left: auto;
     margin-right: auto;

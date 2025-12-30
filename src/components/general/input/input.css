@@ -10,7 +10,7 @@
 .field-group input {
     width: 100%;
     margin-bottom: 5px;
-    padding: 5px 5px;
+    padding: 5px;
     border: 0;
     border-bottom: 1px solid blue;
 }
@@ -26,4 +26,9 @@
 .field-group .description {
     height: 20px;
     margin-bottom: 5px;
+}
+
+.field-group .error {
+    color: #f00;
+    border-color: #f00;
 }

@@ -15,9 +15,14 @@
     "noEmit": true,
 
     /* Linting */
-    "strict": true,
+    /* By Ya.Requirements */
+    "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    /* ================== */
+    "strict": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
@@ -26,6 +31,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
+      "@framework/*": ["src/framework/*"],
       "@pages/*": ["src/pages/*"],
       "@utils/*": ["src/utils/*"]
     }

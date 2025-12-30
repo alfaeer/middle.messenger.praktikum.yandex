@@ -38,7 +38,7 @@
     display: flex;
     justify-content: space-between;
     height: 50px;
-    border-bottom: solid 2px rgb(220, 220, 220);
+    border-bottom: solid 2px rgb(220 220 220);
     align-items: center;
 }
 
@@ -58,7 +58,7 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    grid-gap: 10px;
+    gap: 10px;
 }
 
 .profile-nav button {
@@ -66,13 +66,13 @@
 }
 
 .profile-nav .button.link {
-    border-bottom: solid 2px rgb(220, 220, 220);
+    border-bottom: solid 2px rgb(220 220 220);
     border-radius: 0;
 }
 
 
 .modal-content h2 {
-    margin: 0 0 30px 0;
+    margin: 0 0 30px;
 }
 
 .modal-content main {
@@ -105,22 +105,19 @@
     width: 160px;
     border: none;
     border-radius: 50%; 
-    background-color: rgb(230, 230, 230);
-
+    background-color: rgb(230 230 230);
     top: 50%;
     margin-top: -75px;
     left: 50%;
     margin-left: -75px;
-
     text-decoration: none;
     color: white;
-    
     position: absolute;
     transition: 0.5s;
 }
 
 .main-img-container a:hover {
-    background-color: rgb(130, 130, 130);
+    background-color: rgb(130 130 130);
 }
 
 .profile-hover-text {

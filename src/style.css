@@ -33,5 +33,5 @@ body {
 #iframe-box iframe {
     width: calc(100% - 6px);
     height: calc(100% - 6px);
-    border: solid 0px;
+    border: solid 0;
 }

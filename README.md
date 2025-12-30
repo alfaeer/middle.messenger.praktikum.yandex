@@ -14,8 +14,8 @@
 * Sign Up page - https://yandex-practicum-alfaeer.netlify.app/src/pages/sign-up
 * Chat page - https://yandex-practicum-alfaeer.netlify.app/src/pages/chat
 * Profile page - https://yandex-practicum-alfaeer.netlify.app/src/pages/profile
-* Error 404 page - https://yandex-practicum-alfaeer.netlify.app/src/pages/error_404
-* Error 500 page - https://yandex-practicum-alfaeer.netlify.app/src/pages/error_500
+* Error 404 page - https://yandex-practicum-alfaeer.netlify.app/src/pages/error404
+* Error 500 page - https://yandex-practicum-alfaeer.netlify.app/src/pages/error500
 
 Редактирование профиля и изменение паролей сделана путем изменения div элемента по нажатию на соответствующие кнопки.
 На страничках чата и view профиля добавлены тестовые данные.
