@@ -8,16 +8,13 @@ const METHODS = {
 interface HttpRequestOptions {
     headers?: Record<string, string>;
     method?: typeof METHODS[keyof typeof METHODS];
-    // really, data maybe everything you want... string, number, object
-    // and actually I don't care what is it, because it will be converted somehow to string
-    // or provided directly to server as-is
-    data?: Record<string, any> | FormData;
+    data?: Record<string, unknown> | FormData;
     timeout?: number;
 }
 
-function queryStringify(data: Record<string, any>): string {
+function queryStringify(data: Record<string, unknown>): string {
     const params = new URLSearchParams();
-    Object.entries(data).forEach(([key, value]) => params.append(key, value));
+    Object.entries(data).forEach(([key, value]) => params.append(key, `` + value));
     return params.toString();
 }
 
@@ -51,7 +48,7 @@ export class HttpClient {
 
             xhr.open(
                 method,
-                method === METHODS.GET ? `${url}?${queryStringify(data as Record<string, any>)}` : url
+                method === METHODS.GET ? `${url}?${queryStringify(data as Record<string, unknown>)}` : url
             );
 
             Object.keys(headers).forEach(key => {
@@ -71,7 +68,7 @@ export class HttpClient {
             if (method === METHODS.GET || !data) {
                 xhr.send();
             } else {
-                xhr.send(data as any);
+                xhr.send(data as Document | XMLHttpRequestBodyInit | null);
             }
         });
     }

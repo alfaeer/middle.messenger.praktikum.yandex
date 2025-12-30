@@ -64,12 +64,9 @@ export default class Block {
     protected addAttributes() {
         const { attr = {} } = this.props;
         if (this._element) {
-            Object.entries(attr).forEach(([key, value]) => {
-                // added because of TS2531: Object is possibly null
-                // but a little earlier I have this validation
-                // @ts-ignore
+            for (const [key, value] of Object.entries(attr)) {
                 this._element.setAttribute(key, value as string);
-            });
+            }
         }
     }
 
