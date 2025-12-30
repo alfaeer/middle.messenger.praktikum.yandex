@@ -9,7 +9,7 @@
 * npm run build - typescript validation и сборка
 * npm run lint-validation - eslint and styleline validation одним шагом
 
-Ссылка на netlify - https://yandex-practicum-alfaeer.netlify.app
+Ссылка на netlify та же - https://yandex-practicum-alfaeer.netlify.app
 
 Проект сделан так, что есть основная страничка, на которой настроены ссылки на другие странички, которые открываются в iframe рядом. Главная страничка доступна по ссылке netlify, а остальные странички можно открыть по следующим urls:
 * Sign In page - https://yandex-practicum-alfaeer.netlify.app/src/pages/sign-in
