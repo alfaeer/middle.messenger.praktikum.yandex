@@ -1,0 +1,72 @@
+.profile-sidebar {
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(250 250 250);
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-right: solid rgb(235 235 235) 2px;
+    text-align: center;
+}
+
+.profile-main {
+    margin-left: 100px; 
+    padding: 0 10px;
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+    width: 70%;
+    margin: 40px auto;
+}
+
+.avatar-img a {
+    height: 160px;
+    width: 160px;
+    border: none;
+    border-radius: 50%; 
+    background-color: rgb(230 230 230);
+    top: 50%;
+    margin-top: -75px;
+    left: 50%;
+    margin-left: -75px;
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    transition: 0.5s;
+}
+
+.avatar-img a:hover {
+    background-color: rgb(130 130 130);
+}
+
+.avatar-img-text-hover {
+    margin-top: 65px;
+    width: 70px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+}
+
+.avatar-img  a:hover .avatar-img-text-hover {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.main-container {
+    align-items: center;
+    min-width: 500px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}

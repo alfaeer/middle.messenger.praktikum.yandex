@@ -1,4 +1,2 @@
-import './view-profile.css';
-
-export {default as ViewProfile} from './view-profile.hbs?raw';
+export {default as ViewProfile} from './main';
 export let link = '/src/pages/view-profile/';

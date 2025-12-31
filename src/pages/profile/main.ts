@@ -1,53 +1,47 @@
-import '@pages/styles.css';
+import '@pages/profile/profile.css';
 
-import * as GeneralComponents from '@components/general';
-import * as TemplateUtils from '@utils/TemplateUtils';
+import Block from '@framework/Block.ts';
+import { ViewProfile } from './view-profile';
 
-import {ViewProfile} from './view-profile';
-import {EditProfile} from './edit-profile';
-import {EditPassword} from './edit-password';
+import * as FakeData from '@utils/FakeData';
+import { Avatar } from '@components/general';
 
+export default class ProfilePage extends Block {
+    constructor() {
+        super({
+            title: 'Профиль',
 
-TemplateUtils.prepareAndCompilePage([GeneralComponents,
-    {'ViewProfile': ViewProfile},
-    {'EditProfile': EditProfile},
-    {'EditPassword': EditPassword}
-], 'app', ViewProfile, {
-    userMail: "IvanSobaka@example.com",
-    userLogin: "Ivan1377",
-    userName: "Ivan",
-    userSecondName: "Ivanov",
-    userNickname: "Ivashka",
-    userPhoneNumber: "+7(777)7777777",
-});
-
-
-document.getElementById("profile-edit-info")!.addEventListener('click', (e) => {
-    e.preventDefault();
-    TemplateUtils.compileToHtml('app', EditProfile);
-});
-
-document.getElementById("profile-edit-password")!.addEventListener('click', (e) => {
-    e.preventDefault();
-    TemplateUtils.compileToHtml('app', EditPassword);
-});
-
-document.getElementById("profile-edit-exit")!.addEventListener('click', (e) => {
-    e.preventDefault();
-});
-
-document.getElementById("profile-img-change")!.addEventListener('click', (e) => {
-    e.preventDefault();
-    // @ts-ignore
-    document.getElementById("change-img-container")!.showModal();
-});
-
-// @ts-ignore
-const handleModalClick = ({currentTarget, target}) => {
-    const isClickedOnBackdrop = target === currentTarget;
-    if (isClickedOnBackdrop) {
-        currentTarget.close();
+            Avatar: new Avatar({
+                url: '/images/default_1.jpg',
+                width: '156px',
+                height: '156px'
+            })
+        });
     }
-};
 
-document.getElementById("change-img-container")!.addEventListener("click", handleModalClick);
+    override render() {
+        return `
+            <div class="profile-container">
+                <div class="profile-sidebar">
+                    <a href="/src/pages/chat/" class="button primary round">🡠</a>
+                </div>
+                <div class="profile-main">
+                    <div class="avatar-container">
+                            {{{ Avatar }}}
+                    </div>
+                    <div id="main-box" class="main-box">
+                        Профиль загружается...
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+}
+
+const page = new ProfilePage();
+document.getElementById('app')?.replaceWith(page.getContent());
+
+const viewProfile = new ViewProfile({
+    ...FakeData.getProfileData()
+});
+document.getElementById('main-box')?.replaceWith(viewProfile.getContent());

@@ -11,8 +11,8 @@ export default defineConfig({
                 "sign-in": './src/pages/sign-in/index.html',
                 "sign-up": './src/pages/sign-up/index.html',
                 "chat": './src/pages/chat/index.html',
-                "error_404": './src/pages/error_404/index.html',
-                "error_500": './src/pages/error_500/index.html',
+                "error404": './src/pages/error404/index.html',
+                "error500": './src/pages/error500/index.html',
                 "profile": './src/pages/profile/index.html'
             }
         }
@@ -27,6 +27,7 @@ export default defineConfig({
         alias: {
             '@': '/src',
             '@components': '/src/components',
+            '@framework': '/src/framework',
             '@pages': '/src/pages',
             '@utils': '/src/utils'
         },

@@ -4,6 +4,7 @@
     height: 80px;
     padding: 10px;
     cursor: pointer;
+    border-bottom: 1px solid #999;
 }
 
 .chat-field-wrapper:hover {
@@ -12,10 +13,6 @@
 
 .selected {
     background: #98d3f5;
-}
-
-.chat-field-wrapper {
-    border-bottom: 1px solid #999999;
 }
 
 .chat-field-item-data {

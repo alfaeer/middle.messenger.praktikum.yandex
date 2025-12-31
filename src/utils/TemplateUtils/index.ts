@@ -1,5 +1,8 @@
 import Handlebars from 'handlebars';
 
+// Used any just because I don't know correct type here
+// also it is temporary class which will be removed when we will implement routing
+
 export const registerComponents = (components: object) => {
     Object.entries(components).forEach(([name, template]) =>
         Handlebars.registerPartial(name, template)
