@@ -3,19 +3,80 @@ import './chat.css';
 
 import Block from '@framework/Block.ts';
 import { ChatContainer } from '@components/chat/chat-container';
-
-import * as FakeData from '@utils/FakeData';
-import { ChatField } from '@components/chat/chat-field';
-import { Avatar } from '@components/general';
+import { Button, DialogContainer, Input, Link } from '@components/general';
 import { MessageContainer } from '@components/chat/message-container';
-import { MessageField } from '@components/chat/message-field';
+import { validateSession } from '@service/UserService';
+import ChatService from '@service/ChatService.ts';
 
 export default class ChatPage extends Block {
+    chatService = new ChatService();
+
     constructor() {
         super({
+            doctitle: 'Messenger',
 
+            ProfileLink: new Link({
+                id: 'profile-settings',
+                link: '/settings',
+                label: 'Профиль >'
+            }),
+
+            CreateChatButton: new Button({
+                id: 'create-chat',
+                label: '+',
+                class: 'round',
+                events: {
+                    click: () => {
+                        const dialog = new DialogContainer({
+                            title: 'Создать чат',
+                            content: '{{{ TitleInput }}}',
+
+                            TitleInput: new Input({
+                                id: 'title-input',
+                                type: 'text',
+                                placeholder: 'Введите имя чата',
+                                label: 'Введите имя чата:'
+                            }),
+
+                            buttons: [
+                                new Button({
+                                    id: 'submit',
+                                    type: 'submit',
+                                    class: 'primary',
+                                    label: 'Создать',
+                                    events: {
+                                        click: () => {
+                                            console.log('modal click');
+                                            console.log(this.children);
+                                            this.chatService.createNewChat((dialog.getChildren().TitleInput as Input).getInputValue());
+                                            dialog.hide();
+                                        }
+                                    }
+                                })
+                            ]
+                        });
+
+                        this.getContent().append(dialog.getContent());
+                        dialog.show();
+                    }
+                }
+            }),
+
+            ChatContainer: new ChatContainer({}),
+
+            MessageContainer: new MessageContainer({}),
         });
     }
+
+    override componentDidMount() {
+        validateSession(this.constructor.name);
+    }
+
+    /*override setProps(nextProps: BlockProps) {
+        console.log('chat.setProps', nextProps);
+        this.children.ChatContainer.setProps(nextProps);
+        // super.setProps(nextProps);
+    }*/
 
     override render() {
         return `
@@ -23,7 +84,7 @@ export default class ChatPage extends Block {
                 <aside class="chat-root-container">
                     <div class="chat-header">
                         <div class="my-profile">
-                            <a href="/src/pages/profile/">Профиль ></a>
+                            {{{ ProfileLink }}}
                         </div>
                         <div class="chat-search">
                             <div class="chat-search-box">
@@ -38,13 +99,16 @@ export default class ChatPage extends Block {
                         </div>
                     </div>
                     <div id="chat-box">
-                        Чаты скоро загрузятся...
+                        {{{ ChatContainer }}}
+                    </div>
+                    <div class="chat-buttons-container">
+                        {{{ CreateChatButton }}}    
                     </div>
                 </aside>
                 <div class="divider"></div>
                 <main class="message-root-container">
                     <div id="message-box">
-                        Выберите чат, чтобы отправить сообщение
+                        {{{ MessageContainer }}}
                     </div>
                 </main>
             </div>
@@ -52,44 +116,20 @@ export default class ChatPage extends Block {
     }
 }
 
-const page = new ChatPage();
-document.getElementById("app")?.replaceWith(page.getContent());
+/*const storeMapper = (state: StoreStateObject) => {
+    return {
+        ...state.chat
+    }
+}
 
-const chatContainer = new ChatContainer({});
-document.getElementById("chat-box")?.replaceWith(chatContainer.getContent());
-const messageContainer = new MessageContainer({});
-document.getElementById("message-box")?.replaceWith(messageContainer.getContent());
+export default connect(storeMapper)(ChatPage);*/
 
-const chatDataJson = FakeData.getChatList();
-const chatData: Array<Block> = chatDataJson.reduce((acc: Array<Block>, val) => {
-    acc.push(new ChatField({
-        ...val,
-
-        Avatar: new Avatar({
-            url: val.avatar,
-        })
-    }));
-    return acc;
-}, []);
-chatContainer.setData({
-    chats: chatData
-})
-
-const messageDataJson = FakeData.getMessageList();
-const messageData: Array<Block> = messageDataJson.reduce((acc: Array<Block>, val) => {
-    acc.push(new MessageField({
-        ...val,
-    }));
-    return acc;
-}, []);
-messageContainer.setProps({
-    id: chatDataJson[0].id,
-    profileName: chatDataJson[0].profileName,
-
-    Avatar: new Avatar({
-        url: chatDataJson[0].avatar
-    })
-});
-messageContainer.setData({
-    messages: messageData
-})
+/*function getMessageData() {
+    const messageDataJson = FakeData.getMessageList();
+    return messageDataJson.reduce((acc: Array<Block>, val) => {
+        acc.push(new MessageField({
+            ...val,
+        }));
+        return acc;
+    }, []);
+}*/

@@ -11,7 +11,7 @@
     background: #d5ebf7;
 }
 
-.selected {
+.chat-field-wrapper.selected {
     background: #98d3f5;
 }
 
@@ -22,16 +22,20 @@
 }
 
 .chat-field-item-data .profile h4 {
-    margin: 4px;
+    margin: 2px 4px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .chat-field-item-data .profile p {
-    margin: 4px;
+    margin: 2px 4px;
     font-size: 14px;
 }
 
 .chat-field-item-data .data-box {
     flex: 1 1 auto;
+    margin-left: 4px;
+    width: 60px;
 }
 
 .chat-field-item-data .info-box {

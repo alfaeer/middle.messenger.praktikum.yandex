@@ -5,13 +5,20 @@ export default class Input extends Block {
     protected _isValid = false;
 
     constructor(props: BlockProps) {
+        // props.events = props.events || {
+        //     blur: () => {
+        //         this.validate();
+        //     }
+        // };
+
         super({
             ...props,
-            events: {
+            /*events: {
                 blur: () => {
                     this.validate();
-                }
-            }
+                },
+                ...props?.events
+            }*/
         });
     }
 
@@ -32,8 +39,8 @@ export default class Input extends Block {
         if (!inputField)
             return null;
         return {
-            [inputField.name] : inputField.value
-        }
+            [inputField.name]: inputField.value
+        };
     }
 
     override addEvents() {
@@ -80,7 +87,7 @@ export default class Input extends Block {
             isError: true,
             description: string,
             value: this.getInput()?.value
-        })
+        });
     }
 
     public removeValidateError() {
@@ -88,7 +95,7 @@ export default class Input extends Block {
             value: this.getInput()?.value,
             isError: false,
             description: ``
-        })
+        });
     }
 
     override render() {

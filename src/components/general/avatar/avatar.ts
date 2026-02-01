@@ -6,6 +6,8 @@ export default class Avatar extends Block {
             ...props,
         });
 
+        if (!this.props.url)
+            this.props.url = '/images/default-user.jpg';
         if (!this.props.width)
             this.props.width = '56px';
         if (!this.props.height)

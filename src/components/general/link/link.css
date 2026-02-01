@@ -1,0 +1,51 @@
+a {
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    padding: 0;
+}
+
+a:hover {
+    border-radius: 10px;
+    box-shadow: 0 0 2px 2px rgb(0 0 0);
+}
+
+a.primary {
+    color: white;
+    border: solid 2px rgb(13 110 255);
+    background-color: rgb(13 110 255);
+    width: 100%;
+}
+
+a.link {
+    background-color: transparent;
+    border-color: transparent;
+    color: rgb(13 110 255);
+}
+
+a.redlink {
+    background-color: transparent;
+    border-color: transparent;
+    color: rgb(255 0 0);
+}
+
+a.round {
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
+    border: none;
+}
+
+a.button {
+    height: 45px;
+    box-shadow: none;
+    border-radius: 6px;
+    color: rgb(80 80 80);
+    background-color: lightgray;
+    border: solid 1px grey;
+}

@@ -1,0 +1,22 @@
+.user-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 4px auto;
+}
+
+.avatar-description {
+    padding: 0 10px
+}
+
+.user-description {
+    align-content: center;
+}
+
+.user-field:hover {
+    background: #d5ebf7;
+}
+
+.user-field.selected {
+    background: #98d3f5;
+}

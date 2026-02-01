@@ -8,6 +8,6 @@ export default class Button extends Block {
     }
 
     override render(): string {
-        return `<button id="{{id}}" type="{{type}}" class="button {{class}}">{{label}}</button>`;
+        return `<button id="{{id}}" type="{{type}}" class="button {{class}}" title="{{placeholder}}">{{label}}</button>`;
     }
 }

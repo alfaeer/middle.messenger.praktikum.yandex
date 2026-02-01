@@ -1,4 +1,4 @@
-type PropsAllType = string | number | Array | Block;
+type PropsAllType = string | number | boolean | Array | Block | null;
 
 interface BlockProps {
     [key: string]: PropsAllType;

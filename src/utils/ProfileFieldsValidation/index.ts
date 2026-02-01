@@ -42,10 +42,7 @@ export const validateAndLogin = (page: Block, e: Event) => {
         formValidateResult = false;
     }
 
-    if (formValidateResult) {
-        console.log(`everything is valid, logging using this object: ${JSON.stringify(formData)}`);
-        alert("Successful login or registration will be in future.");
-    } else
+    if (!formValidateResult)
         alert(`Исправьте выделенные поля, чтобы они проходили валидацию`);
     return formValidateResult;
 };
@@ -78,10 +75,7 @@ export const validatePasswordChange = (page: Block, e: Event) => {
         formValidateResult = false;
     }
 
-    if (formValidateResult) {
-        console.log(`everything is valid, password will be changed using this object: ${JSON.stringify(formData)}`);
-        alert("Successful password change will be in future.");
-    } else
+    if (!formValidateResult)
         alert(`Исправьте выделенные поля, чтобы они проходили валидацию`);
     return formValidateResult;
 }

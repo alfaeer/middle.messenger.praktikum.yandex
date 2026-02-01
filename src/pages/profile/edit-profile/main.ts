@@ -4,13 +4,17 @@ import { Button, Input } from '@/components/general';
 import * as RegexValidations from '@/utils/ProfileFieldsValidation';
 import Block from '@framework/Block.ts';
 import * as RegexValidation from '@utils/ProfileFieldsValidation';
-import { ViewProfile } from '@pages/profile';
-import * as FakeData from '@utils/FakeData';
+import { ProfilePage, ViewProfile } from '@pages/profile';
+import { connect } from '@framework/Store.ts';
+import * as userService from '@service/UserService.ts';
+import type { StoreStateObject } from '@/types/store-state-object';
 
-export default class EditProfile extends Block {
+class EditProfile extends Block {
     constructor(props: BlockProps) {
         super({
             ...props,
+
+            title: 'Редактирование',
 
             EmailInput: new Input({
                 id: 'email',
@@ -56,10 +60,25 @@ export default class EditProfile extends Block {
             }),
             events: {
                 submit: (e: Event) => {
-                    onFormSubmit(e, this);
+                    if (RegexValidation.validateAndLogin(this, e)) {
+                        userService.updateUserProfile({
+                            first_name: (this.children.FirstNameInput as Input).getInputValue(),
+                            second_name: (this.children.SecondNameInput as Input).getInputValue(),
+                            display_name: (this.children.DisplayNameInput as Input).getInputValue(),
+                            login: (this.children.LoginInput as Input).getInputValue(),
+                            email: (this.children.EmailInput as Input).getInputValue(),
+                            phone: (this.children.PhoneInput as Input).getInputValue()
+                        })
+                        const viewProfile = new ViewProfile({});
+                        this.getElement()?.replaceWith(viewProfile.getContent());
+                        }
                 }
             }
         });
+    }
+
+    override componentDidMount() {
+        userService.validateSession(ProfilePage.name, this.constructor.name);
     }
 
     override render() {
@@ -83,11 +102,10 @@ export default class EditProfile extends Block {
     }
 }
 
-function onFormSubmit(e: Event, context: Block) {
-    if (RegexValidation.validateAndLogin(context, e)) {
-        const viewProfile = new ViewProfile({
-            ...FakeData.getProfileData()
-        });
-        context.getElement()?.replaceWith(viewProfile.getContent());
+const storeMapper = (state: StoreStateObject)=> {
+    return {
+        ...state.user,
     }
 }
+
+export default connect(storeMapper)(EditProfile);

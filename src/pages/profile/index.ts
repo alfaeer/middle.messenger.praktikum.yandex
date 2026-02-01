@@ -1,5 +1,10 @@
+import page from './main';
+
+export let name = page.name;
+export let link = '/settings';
+
 export { ViewProfile } from './view-profile';
 export { EditProfile } from './edit-profile';
 export { EditPassword } from './edit-password';
+export { default as ProfilePage } from './main';
 
-export let link = '/src/pages/profile/';

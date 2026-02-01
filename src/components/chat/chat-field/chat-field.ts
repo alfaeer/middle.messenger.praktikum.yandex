@@ -15,15 +15,15 @@ export default class ChatField extends Block {
                         {{{ Avatar }}}
                         <div class="data-box">
                             <div class="profile">
-                                <h4>{{profileName}}</h4>
-                                <p>{{message}}</p>
+                                <h4>{{title}}</h4>
+                                <p>{{last_message.content}}</p>
                             </div>
                         </div>
                         <div class="info-box">
                             <div class="time-box auto-flex-size">{{messageTime}}</div>
-                            {{#if notifications}}
+                            {{#if unread_count}}
                                 <div class="notifications-box auto-flex-size">
-                                    <!--<div class="notification-value">-->{{notifications}}<!--</div>-->
+                                    <!--<div class="notification-value">-->{{unread_count}}<!--</div>-->
                                 </div>
                             {{/if}}
                         </div>
