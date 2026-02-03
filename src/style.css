@@ -4,34 +4,6 @@ body {
     margin: 0 auto;
 }
 
-#nav-links {
-    position: absolute;
-    height: 100%;
-    width: 220px;
-}
-
-#nav-links ul {
-    margin: 100px 10px 20px;
-}
-
-#divider {
-    border-left:1px solid #38546d;
-    border-right:1px solid #16222c;
-    top: 5px;
-    height: calc(100% - 10px);
-    position:absolute;
-    left:222px;
-}
-
-#iframe-box {
-    position: absolute;
-    height: calc(100% - 2px);
-    left: 225px;
-    width: calc(100% - 225px);
-}
-
-#iframe-box iframe {
-    width: calc(100% - 6px);
-    height: calc(100% - 6px);
-    border: solid 0;
+#app {
+    display: contents;
 }

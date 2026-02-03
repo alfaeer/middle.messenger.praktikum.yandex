@@ -1,24 +1,17 @@
 import './style.css'
 
 import * as Pages from '@/pages';
-import {NavLinks} from '@components/nav-links';
-import * as TemplateUtils from '@utils/TemplateUtils'
+import Router from '@framework/Routing';
+import { Store } from '@framework/Store.ts';
+import { Error404 } from '@pages/error404';
 
-// temporary thing, will be removed when we will have routing...
-// just don't know what should be instead of any (possibly Module, but imported from what?)
-let pagesData = Object.entries(Pages).map((page: [string, any]) => {
+window.store = new Store({});
+
+window.router = new Router('#app');
+Object.entries(Pages).map((page: [string, any]) => {
     console.log(page);
-    return {name: page[0], link: page[1].link}
+    window.router.use(page[1].link, page[1][page[0]]);
+    window.router.setPath(page[1].name, page[1].link);
 })
-
-TemplateUtils.compileToHtml('nav-links', NavLinks, {pages: pagesData});
-
-Array.from(document.getElementsByClassName("iframe-nav-link")).forEach((el) => {
-    el.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const link = el.getAttribute('data-link')!;
-        const iframe = document.getElementById("iframe-page")!;
-        iframe.setAttribute("src", link);
-    })
-})
+window.router.setNotFoundRoute(window.router.getRoute(window.router.getPath(Error404.name)));
+window.router.start();

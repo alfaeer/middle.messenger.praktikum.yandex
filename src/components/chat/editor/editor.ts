@@ -1,7 +1,10 @@
 import Block from '@framework/Block.ts';
 import { Button } from '@components/general';
+import MessageService from '@service/MessageService.ts';
 
 export default class Editor extends Block {
+    private messageService!: MessageService;
+
     constructor(props: BlockProps) {
         super({
             ...props,
@@ -21,16 +24,21 @@ export default class Editor extends Block {
         });
     }
 
+    override componentDidMount() {
+        this.messageService = new MessageService();
+    }
+
     private onsubmitFunc(e: Event) {
         e.preventDefault();
-        const inputElement = this.getElement()?.getElementsByTagName("input")[0];
-        const value = inputElement?.value;
+        const inputElement = this.getElement()!.getElementsByTagName('input')[0];
+        const value = inputElement.value;
         if (value) {
-            console.log(`this message will be sent soon...`);
-            alert(`This message will be sent soon...`);
-            inputElement.value = "";
+            if (this.messageService)
+                this.messageService.sendMessage(value);
+
+            inputElement.value = '';
         } else {
-            console.log(`no message currently, nothing to do`)
+            console.log(`no message currently, nothing to do`);
         }
     }
 

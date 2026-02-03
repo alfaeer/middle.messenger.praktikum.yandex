@@ -1,6 +1,7 @@
 Задачка в рамках первого этапа Я.Практикума - чатик.
 
 Использованы дефолтные макеты - https://www.figma.com/design/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0-1&p=f&t=INFV8csZ4Brmj9Xd-0
+Кроме добавления, удаления пользователей в чате и редактирования настроек чата. Все это делается через кнопку настройки рядом с кнопкой закрытия чата.
 
 Команды:
 * npm install - установка зависимостей
@@ -10,19 +11,9 @@
 * npm run lint-validation - eslint and styleline validation одним шагом
 
 Ссылка на netlify та же - https://yandex-practicum-alfaeer.netlify.app
+В последнее время с netlify какие то проблемы с доступом к страничкам с приложением. 
+Если не открывается, значит проблемы с провайдером и нужен волшебный вп-кхм-кхм... 
 
-Проект сделан так, что есть основная страничка, на которой настроены ссылки на другие странички, которые открываются в iframe рядом. Главная страничка доступна по ссылке netlify, а остальные странички можно открыть по следующим urls:
-* Sign In page - https://yandex-practicum-alfaeer.netlify.app/src/pages/sign-in
-* Sign Up page - https://yandex-practicum-alfaeer.netlify.app/src/pages/sign-up
-* Chat page - https://yandex-practicum-alfaeer.netlify.app/src/pages/chat
-* Profile page - https://yandex-practicum-alfaeer.netlify.app/src/pages/profile
-* Error 404 page - https://yandex-practicum-alfaeer.netlify.app/src/pages/error404
-* Error 500 page - https://yandex-practicum-alfaeer.netlify.app/src/pages/error500
+В рамках третьего спринта был сделан роутинг по требованиям ЯПрактикума.
 
-Редактирование профиля и изменение паролей сделана путем изменения div элемента по нажатию на соответствующие кнопки.
-На страничках чата и профиля добавлены тестовые данные.
-
-Навигация по страницам оставлена в старом виде (без перехода на Block), т.к. все равно будет удалена в будущем.
-
-В некоторых местах используется тип any, в некоторых местах используется @ts-ignore, 
-там оставлены комментарии почему это сделано. 
+В целом имплементация чата сделана максимально убого по моим ощущениям, но оно работает.

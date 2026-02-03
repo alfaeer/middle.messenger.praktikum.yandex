@@ -5,17 +5,6 @@ export default defineConfig({
     root: '.',
     build: {
         outDir: "dist",
-		rollupOptions: {
-            input: {
-                "main": './index.html',
-                "sign-in": './src/pages/sign-in/index.html',
-                "sign-up": './src/pages/sign-up/index.html',
-                "chat": './src/pages/chat/index.html',
-                "error404": './src/pages/error404/index.html',
-                "error500": './src/pages/error500/index.html',
-                "profile": './src/pages/profile/index.html'
-            }
-        }
     },
     server: {
         port: 3000
@@ -29,7 +18,10 @@ export default defineConfig({
             '@components': '/src/components',
             '@framework': '/src/framework',
             '@pages': '/src/pages',
-            '@utils': '/src/utils'
+            '@utils': '/src/utils',
+            '@rest': '/src/rest',
+            '@service': '/src/service',
+            '@types': '/src/types',
         },
     },
     plugins: [

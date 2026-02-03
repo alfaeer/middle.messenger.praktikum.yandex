@@ -1,9 +1,9 @@
 import Block from '@framework/Block.ts';
 import { Button, Input } from '@components/general';
 import { ViewProfile } from '@pages/profile';
+import * as userService from '@service/UserService.ts';
 
 import * as RegexValidation from '@utils/ProfileFieldsValidation';
-import * as FakeData from '@utils/FakeData';
 
 export default class EditPassword extends Block {
     constructor(props: BlockProps) {
@@ -36,7 +36,14 @@ export default class EditPassword extends Block {
             }),
             events: {
                 submit: (e: Event) => {
-                    onFormSubmit(e, this);
+                    if (RegexValidation.validatePasswordChange(this, e)) {
+                        userService.updateUserPassword({
+                            oldPassword: (this.children.OldPasswordInput as Input).getInputValue(),
+                            newPassword: (this.children.NewPasswordInput as Input).getInputValue(),
+                        });
+                        const viewProfile = new ViewProfile({});
+                        this.getElement()?.replaceWith(viewProfile.getContent());
+                    }
                 }
             }
         });
@@ -57,14 +64,5 @@ export default class EditPassword extends Block {
                 </main>
             </div>
         `;
-    }
-}
-
-function onFormSubmit(e: Event, context: Block) {
-    if (RegexValidation.validatePasswordChange(context, e)) {
-        const viewProfile = new ViewProfile({
-            ...FakeData.getProfileData()
-        });
-        context.getElement()?.replaceWith(viewProfile.getContent());
     }
 }

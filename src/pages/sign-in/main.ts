@@ -2,24 +2,28 @@ import './sign-in.css';
 import '@pages/styles.css';
 
 import Block from '@framework/Block.ts';
-import { Button, Input } from '@components/general';
+import { Button, Input, Link } from '@components/general';
 import * as RegexValidations from '@utils/ProfileFieldsValidation';
+import * as userService from '@service/UserService.ts';
+import { name as RouteName } from '@pages/sign-up';
+import { ChatPage } from '@pages/chat';
 
 export default class SignInPage extends Block {
     constructor() {
         super({
             title: 'Авторизация',
+            doctitle: 'Авторизация',
 
             LoginInput: new Input({
                 id: 'login',
                 label: 'Логин',
-                regex: RegexValidations.loginRegex
+                regex: RegexValidations.loginRegex,
             }),
             PasswordInput: new Input({
                 id: 'password',
                 label: 'Пароль',
                 regex: RegexValidations.passwordRegex,
-                type: 'password'
+                type: 'password',
             }),
             SubmitButton: new Button({
                 id: 'submit',
@@ -27,17 +31,26 @@ export default class SignInPage extends Block {
                 class: 'primary',
                 type: 'submit'
             }),
-            SignUpButton: new Button({
+            SignUpLink: new Link({
                 id: 'sign-up',
                 label: 'Нет аккаунта?',
-                class: 'link'
+                class: 'button link',
+                link: window.router.getPath(RouteName),
             }),
             events: {
                 submit: (e: Event) => {
-                    RegexValidations.validateAndLogin(this, e);
+                    if (RegexValidations.validateAndLogin(this, e))
+                        userService.login({
+                            login: (this.children.LoginInput as Input).getInputValue(),
+                            password: (this.children.PasswordInput as Input).getInputValue()
+                        });
                 }
             }
         });
+    }
+
+    override componentDidMount() {
+        userService.validateSession(ChatPage.name);
     }
 
     override render() {
@@ -52,13 +65,10 @@ export default class SignInPage extends Block {
                         {{{ LoginInput }}}
                         {{{ PasswordInput }}}
                         {{{ SubmitButton }}}
-                        {{{ SignUpButton }}}
+                        {{{ SignUpLink }}}
                     </form>           
                 </div> 
             </div>
         `;
     }
 }
-
-const page = new SignInPage();
-document.getElementById('app')?.replaceWith(page.getContent());

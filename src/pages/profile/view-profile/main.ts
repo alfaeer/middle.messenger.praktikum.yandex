@@ -3,13 +3,17 @@ import './view-profile.css';
 import { Button } from '@/components/general';
 import Block from '@framework/Block.ts';
 import { EditProfile } from '../edit-profile';
-import * as FakeData from '@utils/FakeData';
 import { EditPassword } from '@pages/profile';
+import { connect } from '@framework/Store.ts';
+import { logout } from '@service/UserService';
+import type { StoreStateObject } from '@/types/store-state-object';
 
-export default class ViewProfile extends Block {
+class ViewProfile extends Block {
     constructor(props: BlockProps) {
         super({
             ...props,
+
+            title: 'Редактирование',
 
             EditProfileButton: new Button({
                 id: 'profile-edit-info',
@@ -92,9 +96,7 @@ export default class ViewProfile extends Block {
 
 function onEditProfileClick(e: Event, context: Block) {
     e.preventDefault();
-    const editProfile = new EditProfile({
-        ...FakeData.getProfileData()
-    });
+    const editProfile = new EditProfile({});
     context.getElement()?.replaceWith(editProfile.getContent());
 }
 
@@ -106,5 +108,13 @@ function onEditPasswordClick(e: Event, context: Block) {
 
 function onExitClick(e: Event) {
     e.preventDefault();
-    alert('Will be logged out?');
+    logout();
 }
+
+const storeMapper = (state: StoreStateObject) => {
+    return {
+        ...state.user,
+    };
+};
+
+export default connect(storeMapper)(ViewProfile);
