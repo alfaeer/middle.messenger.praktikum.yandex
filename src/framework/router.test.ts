@@ -31,7 +31,7 @@ describe('Route tests', () => {
         expect(testRouter['pathes']['SignInPage']).toEqual('/');
         expect(testRouter['pathes']['SignUpPage']).toEqual('/sign-up');
         expect(testRouter['pathes']['ChatPage']).toEqual('/messenger');
-        expect(testRouter['pathes']['ProfilePage']).toEqual('/settings');
+        expect(testRouter['pathes']['']).toEqual('/settings');
         expect(testRouter['pathes']['Error404']).toEqual('/error404');
         expect(testRouter['pathes']['Error500']).toEqual('/error500');
     });
