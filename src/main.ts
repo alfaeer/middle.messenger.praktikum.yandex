@@ -1,7 +1,7 @@
 import './style.css'
 
 import * as Pages from '@/pages';
-import Router from '@framework/Routing';
+import Router from '@framework/Router.ts';
 import { Store } from '@framework/Store.ts';
 import { Error404 } from '@pages/error404';
 
