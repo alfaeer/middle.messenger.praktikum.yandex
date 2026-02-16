@@ -1,6 +1,6 @@
 import { v7 as generateUUID } from 'uuid';
-import { EventBus } from '@/framework/EventBus.ts';
-import Handlebars from 'handlebars';
+import { EventBus } from '@framework/EventBus.ts';
+import * as Handlebars from 'handlebars';
 import { isEquals } from '@utils/ObjectUtils';
 
 export default class Block {

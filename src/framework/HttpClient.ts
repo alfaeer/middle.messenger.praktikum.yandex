@@ -12,6 +12,8 @@ interface HttpRequestOptions {
     timeout?: number;
 }
 
+type HTTPMethod = (url: string, options?: HttpRequestOptions) => Promise<XMLHttpRequest>
+
 function queryStringify(data: Record<string, unknown>): string {
     if (!data)
         return '';
@@ -24,32 +26,28 @@ function queryStringify(data: Record<string, unknown>): string {
 export default class HttpClient {
     BASE_URL = 'https://ya-praktikum.tech/api/v2';
 
-    constructor(rootPath: string) {
+    constructor(rootPath: string = '') {
         if (rootPath)
             this.BASE_URL = this.BASE_URL + rootPath;
     }
 
-    send(url: string, method: typeof METHODS[keyof typeof METHODS], options: HttpRequestOptions ) {
-        return this.request(url, { ...options, method: method })
-    }
-
-    get(url: string, options: HttpRequestOptions = {}): Promise<XMLHttpRequest> {
+    get: HTTPMethod = (url, options = {}) => {
         return this.request(url, { ...options, method: METHODS.GET });
     }
 
-    post(url: string, options: HttpRequestOptions = {}): Promise<XMLHttpRequest> {
+    post: HTTPMethod = (url, options = {}) => {
         return this.request(url, { ...options, method: METHODS.POST });
     }
 
-    put(url: string, options: HttpRequestOptions = {}): Promise<XMLHttpRequest> {
+    put: HTTPMethod = (url, options = {}) => {
         return this.request(url, { ...options, method: METHODS.PUT });
     }
 
-    delete(url: string, options: HttpRequestOptions = {}): Promise<XMLHttpRequest> {
+    delete: HTTPMethod = (url, options = {}) => {
         return this.request(url, { ...options, method: METHODS.DELETE });
     }
 
-    request(url: string, options: HttpRequestOptions = {}): Promise<XMLHttpRequest> {
+    request: HTTPMethod = (url, options = {}) => {
         const { headers = {}, method, data, timeout = 5000 } = options;
         url = this.BASE_URL + url;
 

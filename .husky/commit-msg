@@ -1,0 +1,43 @@
+#!/bin/sh
+
+has_errors=0
+has_commit_error=0
+lint_exit=0
+
+lint_output=$(npm run lint-validation 2>&1) || lint_exit=$?
+
+commit_msg=$(cat "$1")
+pattern="^(feat|fix|refactor|test|build|revert)([ ]?\(.+\))?: .+"
+
+if ! echo "$commit_msg" | grep -qE "$pattern"; then
+  has_commit_error=1
+  has_errors=1
+fi
+
+if [ $lint_exit -ne 0 ]; then
+  has_errors=1
+fi
+
+if [ $has_errors -ne 0 ]; then
+  echo ""
+  echo "=============================="
+  echo "❌ Коммит отклонён. Ошибки:"
+  echo "=============================="
+
+  if [ $lint_exit -ne 0 ]; then
+    echo ""
+    echo "🔴 Ошибки линтинга:"
+    echo "$lint_output"
+  fi
+
+  if [ "$has_commit_error" = "1" ]; then
+    echo ""
+    echo "🔴 Commit message не соответствует формату '${pattern}."
+    printf "   Ваше сообщение: '${commit_msg}'\n"
+    echo "   Допустимые типы: feat, fix, docs, style, refactor, test, build, revert"
+    echo "   Пример: feat (auth): добавить авторизацию"
+  fi
+
+  echo ""
+  exit 1
+fi
